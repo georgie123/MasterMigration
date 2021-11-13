@@ -1,11 +1,14 @@
 from selenium import webdriver
-from selenium.webdriver.support.ui import Select
+import time
+import xml.etree.ElementTree as ET
 
 chrome_path = 'C:/Users/Georges/PycharmProjects/chromedriver.exe'
 browser = webdriver.Chrome(chrome_path)
 
-browser.maximize_window()
+tree = ET.parse('C:/Users/Georges/Downloads/Tmp_extract_alias_joo_content.xml')
+root = tree.getroot()
 
+browser.maximize_window()
 browser.get('https://joomla4.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit')
 
 # CONNEXION
@@ -15,26 +18,20 @@ username.send_keys('geo854JKOkpJ45carto')
 password.send_keys('7yzr7aum§joomla')
 browser.find_element_by_id('btn-login-submit').click()
 
-# CHAMPS CLASSIQUE ARTICLE
-title = browser.find_element_by_id('jform_title')
-alias = browser.find_element_by_id('jform_alias')
-txt_src = browser.find_element_by_id('jform_articletext')
+for my_poi in root.findall('Tmp_extract_alias_joo_content'):
+    xml_title = my_poi.find('title').text
+    xml_alias = my_poi.find('alias').text
 
-title.send_keys('Test article X9')
-alias.send_keys('Test-article-X9')
-txt_src.send_keys('<p>Paragraphe 1</p>')
+    browser.maximize_window()
+    browser.get('https://joomla4.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit')
 
-# LISTE CATEGORIE
-categorie_list = browser.find_element_by_xpath('.//div[@class="choices__inner"][contains(., "Accueil")]')
-categorie_list.click()
-# Pour choisir News
-browser.find_element_by_id('choices--jform_catid-item-choice-8').click()
+    # CHAMPS CLASSIQUE ARTICLE
+    title = browser.find_element_by_id('jform_title')
+    alias = browser.find_element_by_id('jform_alias')
 
-# LISTE ACCESS
-access_list = Select(browser.find_element_by_id('jform_access'))
-access_list.select_by_value('8')
+    title.send_keys(xml_title)
+    alias.send_keys(xml_alias)
 
-# LISTE TAGS
-browser.find_element_by_id('jform_tags').click()
+    browser.find_element_by_id('save-group-children-save').click()
 
-# browser.find_element_by_id('save-group-children-save').click()
+    time.sleep(2)
