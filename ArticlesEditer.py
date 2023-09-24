@@ -38,9 +38,9 @@ for my_poi in root.findall('Tmp_extract_alias_joo_content'):
     # browser.find_element(By.LINK_TEXT, "Présentation générale").click()
 
     element = browser.find_element(By.LINK_TEXT, xml_title)
-    time.sleep(0.5)
+    time.sleep(1)
     browser.execute_script("arguments[0].click();", element)
-    time.sleep(0.5)
+    time.sleep(1)
     browser.find_element("id", "save-group-children-save").click()
 
-    time.sleep(0.5)
+    time.sleep(1)
