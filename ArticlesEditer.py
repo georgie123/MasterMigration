@@ -20,7 +20,7 @@ browser.find_element("id", "btn-login-submit").click()
 for i in liste_des_id_nouveau_site:
 
     # browser.maximize_window()
-    browser.get('https://j4binv.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit&id=' + i)
+    browser.get('https://j4binv.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit&id=' + str(i))
 
     browser.find_element("id", "save-group-children-save").click()
 
