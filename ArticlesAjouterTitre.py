@@ -9,7 +9,6 @@ tree = ET.parse('C:/Users/Georges/Downloads/Tmp_extract_alias_joo_content.xml')
 root = tree.getroot()
 
 browser.maximize_window()
-# browser.get('https://joomla4.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit')
 browser.get('https://j4binv.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit')
 
 # CONNEXION
