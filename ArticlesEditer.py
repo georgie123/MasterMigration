@@ -23,7 +23,9 @@ password.send_keys('7yzr7aum§joomla')
 browser.find_element("id", "btn-login-submit").click()
 
 browser.get('https://j4binv.master-geomatique.org/administrator/index.php?option=com_content&view=articles')
+time.sleep(1)
 browser.find_element("id", "list_limit").click()
+time.sleep(1)
 browser.find_element("xpath", "//select/option[@value='0']").click()
 
 for my_poi in root.findall('Tmp_extract_alias_joo_content'):
