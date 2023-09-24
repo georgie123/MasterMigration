@@ -22,6 +22,8 @@ for my_poi in root.findall('Tmp_extract_alias_joo_content'):
     xml_title = my_poi.find('title').text
     xml_alias = my_poi.find('alias').text
 
+    print(xml_title)
+
     # browser.maximize_window()
     # browser.get('https://joomla4.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit')
     browser.get('https://j4binv.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit')

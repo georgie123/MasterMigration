@@ -1,11 +1,16 @@
 from selenium import webdriver
 import time
+from selenium.webdriver.common.by import By
 import xml.etree.ElementTree as ET
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 chrome_path = 'C:/Users/Georges/PycharmProjects/chromedriver.exe'
 browser = webdriver.Chrome(chrome_path)
 
-liste_des_id_nouveau_site = [1,2,3,4,5]
+tree = ET.parse('C:/Users/Georges/Downloads/Tmp_extract_alias_joo_content.xml')
+root = tree.getroot()
 
 browser.maximize_window()
 browser.get('https://j4binv.master-geomatique.org/administrator/index.php?option=com_content&view=articles')
@@ -17,11 +22,25 @@ username.send_keys('geo854JKOkpJ45carto')
 password.send_keys('7yzr7aum§joomla')
 browser.find_element("id", "btn-login-submit").click()
 
-for i in liste_des_id_nouveau_site:
+browser.get('https://j4binv.master-geomatique.org/administrator/index.php?option=com_content&view=articles')
+browser.find_element("id", "list_limit").click()
+browser.find_element("xpath", "//select/option[@value='0']").click()
 
+for my_poi in root.findall('Tmp_extract_alias_joo_content'):
+    xml_title = my_poi.find('title').text
+
+    print(xml_title)
     # browser.maximize_window()
-    browser.get('https://j4binv.master-geomatique.org/administrator/index.php?option=com_content&view=article&layout=edit&id=' + str(i))
 
+
+    # browser.find_element("xpath", "//a[@href='/administrator/index.php?option=com_content&task=article.edit&id=1']").click()
+
+    # browser.find_element(By.LINK_TEXT, "Présentation générale").click()
+
+    element = browser.find_element(By.LINK_TEXT, xml_title)
+    time.sleep(0.5)
+    browser.execute_script("arguments[0].click();", element)
+    time.sleep(0.5)
     browser.find_element("id", "save-group-children-save").click()
 
-    time.sleep(1)
+    time.sleep(0.5)
