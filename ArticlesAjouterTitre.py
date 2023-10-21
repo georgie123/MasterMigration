@@ -2,6 +2,9 @@ from selenium import webdriver
 import time
 import xml.etree.ElementTree as ET
 
+import warnings
+warnings.filterwarnings('ignore', category=DeprecationWarning)
+
 chrome_path = 'C:/Users/Georges/PycharmProjects/chromedriver.exe'
 browser = webdriver.Chrome(chrome_path)
 
