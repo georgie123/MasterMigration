@@ -53,6 +53,25 @@ for my_poi in root.findall('Tmp_extract_alias_joo_content'):
             and xml_title != 'Master Géomatique' \
             and xml_title != 'Expertise numérique et territoriale' \
             and xml_title != 'Formation en alternance' \
+            and xml_title != 'M1S1 - Master 1e année, 1er semestre' \
+            and xml_title != 'M1S2 - Master 1e année, 2e Semestre' \
+            and xml_title != 'M2S3 - Master 2e année, 1er Semestre' \
+            and xml_title != 'M2S4 - Master 2e année, 2e Semestre' \
+            and xml_title != 'Recruter un.e apprenti.e ou un.e stagiaire' \
+            and xml_title != 'Taxe d\'Apprentissage' \
+            and xml_title != 'Stages et apprentissage' \
+            and xml_title != 'Partenariats' \
+            and xml_title != 'Elles nous ont fait confiance' \
+            and xml_title != 'Présentation Entreprise' \
+            and xml_title != 'Accéder au Master' \
+            and xml_title != 'Missing Maps of Urban Violence' \
+            and xml_title != 'La campagne nationale de candidature au Master est lancée !' \
+            and xml_title != 'Plus que quelques jours pour candidater !' \
+            and xml_title != 'Équipe pédagogique' \
+            and xml_title != 'XXXXXXXXX' \
+            and xml_title != 'XXXXXXXXX' \
+            and xml_title != 'XXXXXXXXX' \
+            and xml_title != 'XXXXXXXXX' \
             and xml_title != 'XXXXXXXXX':
 
         print(xml_title)
