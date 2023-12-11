@@ -11,7 +11,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 
 chrome_path = 'C:/Users/Georges/PycharmProjects/chromedriver.exe'
-browser = webdriver.Chrome(chrome_path)
+
+# CHEZ MOI
+# browser = webdriver.Chrome(chrome_path)
+
+# KF
+browser = webdriver.Chrome()
+browser.get('https://www.google.com/')
 
 tree = ET.parse('C:/Users/Georges/Downloads/Tmp_extract_alias_joo_content.xml')
 root = tree.getroot()
@@ -89,3 +95,6 @@ for my_poi in root.findall('Tmp_extract_alias_joo_content'):
         browser.find_element("id", "save-group-children-save").click()
 
         time.sleep(1)
+
+# KF
+browser.quit()
